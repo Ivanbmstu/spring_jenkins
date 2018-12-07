@@ -11,6 +11,11 @@ public class InfraApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		try {
+			throw new RuntimeException();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
