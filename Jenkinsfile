@@ -70,7 +70,7 @@ pipeline {
       steps {
 
           script {
-             buildInfo = rtGradle.run switches: '--stacktrace --info --console=plain', tasks: gradleTasks, buildInfo: buildInfo
+             buildInfo = rtGradle.run switches: '--stacktrace --debug --console=plain', tasks: gradleTasks, buildInfo: buildInfo
           }
 
       }
