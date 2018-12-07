@@ -36,9 +36,9 @@ quality {
 }
 repositories {
 	mavenLocal()
-	maven { url 'http://172.25.49.49:8081/artifactory/jcenter' }
 	jcenter()
 	mavenCentral()
+	maven { url 'http://172.25.49.49:8081/artifactory/jcenter' }
 }
 
 stacks {
