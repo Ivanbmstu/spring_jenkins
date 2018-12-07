@@ -16,20 +16,24 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'ru.alfalab.gradle.platform.stack:platform-gradle-stacks-plugin:2.2.0-SNAPSHOT'
 		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.9-SNAPSHOT'
+		classpath 'ru.vyarus:gradle-quality-plugin:3.3.0'
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'stacks.app.spring-boot'
 apply plugin: 'stacks.report.test'
-apply plugin: 'code.quality'
+//apply plugin: 'code.quality'
+apply plugin: 'ru.vyarus.quality'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'stacks.release'
 apply plugin: 'stacks.artifactory'
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
-
+quality {
+	pmd=false
+}
 repositories {
 	mavenLocal()
 	maven { url 'http://172.25.49.49:8081/artifactory/jcenter' }
