@@ -50,6 +50,11 @@ stacks {
 		}
 	}
 }
+configurations {
+	testCompile {
+		exclude group: 'junit', module: 'junit:4.12'
+	}
+}
 test {
 	useJUnitPlatform {
 		includeEngines 'junit-jupiter'
