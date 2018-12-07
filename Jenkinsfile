@@ -89,8 +89,6 @@ pipeline {
     }
     stage('export info') {
       steps {
-        appendArtifactInfo buildInfo
-        //TODO avoid this
         script {
           version = readFile('build/project-version')
           buildInfo.modules.each {
