@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class InfraApplication {
     public static void main(String[] args) {
-        SpringApplication.run(InfraApplication.class, args);
+        final var context = SpringApplication.run(InfraApplication.class, args);
+        final int x = context.hashCode();
+        System.out.println(x);
     }
 }
