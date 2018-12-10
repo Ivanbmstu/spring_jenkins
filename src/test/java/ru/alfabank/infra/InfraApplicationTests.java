@@ -11,13 +11,6 @@ public class InfraApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		try {
-			Thread.sleep(100_000);
-			var runtimeException = new RuntimeException();
-			throw runtimeException;
-		} catch (RuntimeException | InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
