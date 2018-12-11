@@ -30,7 +30,7 @@ apply plugin: 'stacks.release'
 apply plugin: 'stacks.artifactory'
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 quality {
 	pmd=false
 }
