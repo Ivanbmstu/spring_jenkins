@@ -7,15 +7,15 @@ buildscript {
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
-		maven { url 'http://172.25.49.49:8081/artifactory/public' }
-		maven { url 'http://172.25.49.49:8081/artifactory/libs-snapshot-local' }
+		maven { url 'http://172.28.68.224:8081/artifactory/public' }
+		maven { url 'http://172.28.68.224:8081/artifactory/libs-snapshot-local' }
 		maven { url 'http://repo.spring.io/plugins-release' }
 		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'ru.alfalab.gradle.platform.stack:platform-gradle-stacks-plugin:2.2.0-SNAPSHOT'
-		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.9-SNAPSHOT'
+		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.7-SNAPSHOT'
 		classpath 'ru.vyarus:gradle-quality-plugin:3.3.0'
 	}
 }
@@ -30,7 +30,7 @@ apply plugin: 'stacks.release'
 apply plugin: 'stacks.artifactory'
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 quality {
 	pmd=false
 }
