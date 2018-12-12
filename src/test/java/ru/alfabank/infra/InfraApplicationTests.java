@@ -11,6 +11,8 @@ public class InfraApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("HELLO WORLD");
+		System.out.println(System.getProperty("java.version"));
 	}
 
 }
