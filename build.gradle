@@ -7,15 +7,15 @@ buildscript {
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
-		maven { url 'http://172.25.49.49:8081/artifactory/public' }
-		maven { url 'http://172.25.49.49:8081/artifactory/libs-snapshot-local' }
+		maven { url 'http://172.28.68.224:8081/artifactory/public' }
+		maven { url 'http://172.28.68.224:8081/artifactory/libs-snapshot-local' }
 		maven { url 'http://repo.spring.io/plugins-release' }
 		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'ru.alfalab.gradle.platform.stack:platform-gradle-stacks-plugin:2.2.0-SNAPSHOT'
-		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.9-SNAPSHOT'
+		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.7-SNAPSHOT'
 		classpath 'ru.vyarus:gradle-quality-plugin:3.3.0'
 	}
 }
@@ -23,8 +23,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'stacks.app.spring-boot'
 apply plugin: 'stacks.report.test'
-//apply plugin: 'code.quality'
-apply plugin: 'ru.vyarus.quality'
+apply plugin: 'code.quality'
+//apply plugin: 'ru.vyarus.quality'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'stacks.release'
 apply plugin: 'stacks.artifactory'
@@ -49,8 +49,20 @@ stacks {
 		}
 	}
 }
-
+configurations {
+	testCompile {
+		exclude group: 'junit', module: 'junit:4.12'
+	}
+}
+test {
+	useJUnitPlatform {
+		includeEngines 'junit-jupiter'
+	}
+}
 dependencies {
+	testImplementation "org.junit.jupiter:junit-jupiter-api:5.2.0"
+	testImplementation "org.junit.jupiter:junit-jupiter-engine:5.2.0"
+	testImplementation "org.junit.jupiter:junit-jupiter-params:5.2.0"
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')

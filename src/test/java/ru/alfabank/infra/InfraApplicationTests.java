@@ -1,21 +1,18 @@
 package ru.alfabank.infra;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class InfraApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		try {
-			throw new RuntimeException();
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-		}
+		System.out.println("HELLO WORLD");
+		System.out.println(System.getProperty("java.version"));
 	}
 
 }
