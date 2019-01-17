@@ -9,7 +9,7 @@ String deployRepo, repoSlug, projKey, branch, version
 pipeline {
   agent {
     label {
-      label 'local-jenkins'
+      label 'mesos-platform'
       customWorkspace UUID_DIR
     }
   }
