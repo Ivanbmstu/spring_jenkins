@@ -14,18 +14,21 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
-
+plugins {
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
+}
 apply plugin: 'java'
 apply plugin: 'io.spring.dependency-management'
+
+
 group = 'ru.test'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 
 repositories {
 	mavenLocal()
 	jcenter()
 	mavenCentral()
-	maven { url 'http://172.28.79.139:8081/artifactory/jcenter' }
 }
 
 configurations {
