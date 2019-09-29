@@ -32,15 +32,7 @@ pipeline {
   stages {
     stage('define build method') {
       steps {
-        sh 'gradle --version'
-      }
-    }
-    stage('build') {
-      steps {
-
-          script {
-             buildInfo = rtGradle.run switches: '--stacktrace --info --console=plain', tasks: gradleTasks, buildInfo: buildInfo
-          }
+        sh './gradlew build'
       }
     }
   }
