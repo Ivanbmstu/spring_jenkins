@@ -7,33 +7,19 @@ buildscript {
 		maven {
 			url "https://plugins.gradle.org/m2/"
 		}
-		maven { url 'http://172.28.79.139:8081/artifactory/public' }
-		maven { url 'http://172.28.79.139:8081/artifactory/libs-snapshot-local' }
 		maven { url 'http://repo.spring.io/plugins-release' }
 		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath 'ru.alfalab.gradle.platform.stack:platform-gradle-stacks-plugin:2.2.0-SNAPSHOT'
-		classpath 'ru.alfabank.mobile.gradle.quality:quality-gradle-plugin:0.1.7-SNAPSHOT'
-		classpath 'ru.vyarus:gradle-quality-plugin:3.3.0'
 	}
 }
 
 apply plugin: 'java'
-apply plugin: 'stacks.app.spring-boot'
-apply plugin: 'stacks.report.test'
-apply plugin: 'code.quality'
-//apply plugin: 'ru.vyarus.quality'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'stacks.release'
-apply plugin: 'stacks.artifactory'
-group = 'ru.alfabank'
+group = 'ru.test'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 11
-quality {
-	pmd=false
-}
 
 repositories {
 	mavenLocal()
@@ -42,14 +28,6 @@ repositories {
 	maven { url 'http://172.28.79.139:8081/artifactory/jcenter' }
 }
 
-stacks {
-	publishing {
-		repositories {
-			snapshot 'libs-snapshot-local'
-			release 'libs-release-local'
-		}
-	}
-}
 configurations {
 	testCompile {
 		exclude group: 'junit', module: 'junit:4.12'
