@@ -39,12 +39,12 @@ pipeline {
 
           switch(params.artifact_target_type) {
             case 'RELEASE':
-              gradleTasks = 'final -Prelease.scope=patch'
-              deployRepo  = 'libs-release-local'
+              gradleTasks = ''
+              deployRepo  = 'build'
             break
             case 'SNAPSHOT':
-              deployRepo  = 'libs-snapshot-local'
-              gradleTasks = 'snapshot -Prelease.scope=patch'
+              deployRepo  = ''
+              gradleTasks = 'build'
             break
             case 'BUILD':
               deployRepo  = ''
@@ -83,27 +83,6 @@ pipeline {
               markAsUnstable()
             }
             server.publishBuildInfo buildInfo
-          }
-        }
-      }
-    }
-    stage('export info') {
-      steps {
-        appendArtifactInfo buildInfo
-        script {
-          version = readFile('build/project-version')
-          buildInfo.modules.each {
-            echo "module: "+it.dump()
-            echo "artifacts: "+it.artifacts.dump()
-            it.artifacts.each {
-              if(it.type == 'app-jar') {
-                def checksum = it.sha1
-                echo "artifact sha1: $checksum"
-                currentBuild.description = "artifact_app_sha1:$checksum"
-                currentBuild.description += "\nversion:$version"
-                currentBuild.description += "\nserviceName:$repoSlug"
-              }
-            }
           }
         }
       }
