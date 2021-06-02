@@ -19,15 +19,6 @@ pipeline {
     timestamps()
   }
 
-  parameters {
-    string(name: 'branch', description: 'branch to build', defaultValue: 'java_only')
-    string(name: 'task_id', description: 'task_id for tracing', defaultValue: '')
-    string(name: 'chain_id', description: 'chaind for fetch deployment info', defaultValue: '')
-    string(name: 'artifact_target_type', description: 'RELEASE|SNAPSHOT|BUILD', defaultValue: 'BUILD')
-    string(name: 'commit_from', description: 'start commit', defaultValue: '')
-    string(name: 'commit_to', description: 'end commit', defaultValue: '')
-  }
-
   stages {
     stage('define build method') {
       steps {
