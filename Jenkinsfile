@@ -23,23 +23,8 @@ pipeline {
     stage('define build method') {
       steps {
         script {
-          switch(params.artifact_target_type) {
-            case 'RELEASE':
-              gradleTasks = ''
-              deployRepo  = 'build'
-            break
-            case 'SNAPSHOT':
               deployRepo  = ''
               gradleTasks = 'build'
-            break
-            case 'BUILD':
-              deployRepo  = ''
-              gradleTasks = 'build'
-            break
-            default:
-              markAsUnstable()
-            break
-          }
         }
       }
     }
