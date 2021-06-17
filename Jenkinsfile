@@ -26,7 +26,7 @@ pipeline {
     stage('define build method') {
       steps {
         script {
-          sh 'echo "hello ${params.testb}"'
+          sh "echo 'hello ${params.testb}'"
           deployRepo  = ''
           gradleTasks = 'build'
 
