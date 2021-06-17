@@ -11,6 +11,9 @@ pipeline {
       customWorkspace UUID_DIR
     }
   }
+  parameters {
+    string(name: 'testb', description: 'test', defaultValue: 'master')
+  }
 
   options {
     buildDiscarder(logRotator(numToKeepStr: '15', artifactNumToKeepStr: '1'))
@@ -23,8 +26,10 @@ pipeline {
     stage('define build method') {
       steps {
         script {
+          sh 'echo "hello ${params.testb}"'
           deployRepo  = ''
           gradleTasks = 'build'
+
         }
       }
     }
