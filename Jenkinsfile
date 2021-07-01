@@ -12,7 +12,7 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'testb', description: 'test', defaultValue: 'master')
+    string(name: 'testb', description: 'FROM MASTER 1', defaultValue: 'master')
   }
 
   options {
