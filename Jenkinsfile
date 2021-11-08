@@ -27,7 +27,7 @@ pipeline {
         script {
               deployRepo  = ''
               gradleTasks = 'artifactoryPublish'
-              server      = Artifactory.newServer url: 'http://host.docker.internal:8080/artifactory', credentialsId: 'arti'
+              server      = Artifactory.newServer url: 'http://host.docker.internal:8081/artifactory', credentialsId: 'arti'
               rtGradle    = Artifactory.newGradleBuild()
               rtGradle.deployer repo: deployRepo, server: server
               rtGradle.deployer.deployMavenDescriptors = true
