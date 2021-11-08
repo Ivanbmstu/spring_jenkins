@@ -12,12 +12,15 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.16.0"
 	}
 }
 
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.jfrog.artifactory"
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 11
@@ -49,4 +52,36 @@ dependencies {
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+artifactory {
+	publish {
+		contextUrl = 'http://192.168.50.178:8081/artifactory'
+		repository {
+			repoKey = "snapshots"
+			username = "admin"
+			password = "Password1"
+		}
+		defaults {
+			publications('mavenJava')
+			publishArtifacts = true
+			// Properties to be attached to the published artifacts.
+			properties = [
+					'platform.artifact-type': 'openapi-spec',
+					'platform.label'        : 'api_spec',
+			]
+			publishPom = true // Publish generated POM files to Artifactory (true by default)
+			publishIvy = false // Publish generated Ivy descriptor files to Artifactory (true by default)
+		}
+	}
+}
+tasks.withType(GenerateModuleMetadata) {
+	enabled = false
+}
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact bootJar
+		}
+	}
 }
