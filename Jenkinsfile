@@ -1,5 +1,7 @@
 //version 0.0.1
+def rtGradle
 def gradleTasks = ''
+def buildInfo = Artifactory.newBuildInfo()
 def UUID_DIR = UUID.randomUUID().toString()
 
 String deployRepo, repoSlug, projKey, branch, version
@@ -24,7 +26,17 @@ pipeline {
       steps {
         script {
               deployRepo  = ''
-              gradleTasks = 'build'
+              gradleTasks = 'artifactoryPublish'
+              server      = Artifactory.newServer url: 'http://host.docker.internal:8080/artifactory', credentialsId: 'arti'
+              rtGradle    = Artifactory.newGradleBuild()
+              rtGradle.deployer repo: deployRepo, server: server
+              rtGradle.deployer.deployMavenDescriptors = true
+              rtGradle.resolver repo: 'public', server: server
+              rtGradle.useWrapper = true
+              rtGradle.usesPlugin = true
+
+              rtGradle.deployer.addProperty("platform.template.id", "ru.alfalab.platform.template.api.simple:template-simple-api")
+                               .addProperty("platform.template.version", "0.1.1")
         }
       }
     }
@@ -33,6 +45,27 @@ pipeline {
           script {
              sh './gradlew clean build --info'
           }
+      }
+    }
+     stage('publish') {
+      steps {
+        script {
+          buildInfo = rtGradle.run switches: '--gradle-user-home $WORKSPACE/.gradle --stacktrace --info --console=plain',
+          tasks: gradleTasks, buildInfo: buildInfo
+        }
+      }
+      post {
+        failure {
+          notifyBitbucketWithState('FAILED')
+        }
+        always {
+          script {
+            server.publishBuildInfo buildInfo
+          }
+        }
+        success {
+          notifyBitbucketWithState('SUCCESS')
+        }
       }
     }
   }
