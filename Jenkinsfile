@@ -55,16 +55,10 @@ pipeline {
         }
       }
       post {
-        failure {
-          notifyBitbucketWithState('FAILED')
-        }
         always {
           script {
             server.publishBuildInfo buildInfo
           }
-        }
-        success {
-          notifyBitbucketWithState('SUCCESS')
         }
       }
     }
