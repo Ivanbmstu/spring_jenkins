@@ -24,7 +24,6 @@ paths:
       responses:
         '200':
           $ref: "./responses/todo.yaml#/components/responses/success" #todo
-          $ref: "./responses/todo.yaml#/components/responses/success" #todo
 
   "/todo/{todoParam}": #todo
     description: "Todo description" #todo
