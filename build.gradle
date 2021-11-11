@@ -84,5 +84,5 @@ tasks.withType(GenerateModuleMetadata) {
 }
 
 
-System.setProperty('javax.net.ssl.trustStore', 'cacerts')
-System.setProperty('javax.net.ssl.trustStorePassword', '')
+//System.setProperty('javax.net.ssl.trustStore', 'cacerts')
+//System.setProperty('javax.net.ssl.trustStorePassword', '')
