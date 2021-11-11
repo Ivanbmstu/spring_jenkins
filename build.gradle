@@ -61,11 +61,11 @@ publishing {
 artifactory {
 	publish {
 		contextUrl = 'https://192.168.50.178:8888/artifactory'
-		repository {
-			repoKey = "snapshots"
-			username = "admin"
-			password = "Password1"
-		}
+//		repository {
+//			repoKey = "snapshots"
+//			username = "admin"
+//			password = "Password1"
+//		}
 		defaults {
 			publications('bootJava')
 			publishArtifacts = true
