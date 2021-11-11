@@ -27,7 +27,7 @@ pipeline {
         script {
               deployRepo  = 'snapshots'
               gradleTasks = 'artifactoryPublish'
-              server      = Artifactory.newServer url: 'http://192.168.50.178:8888/artifactory', credentialsId: 'arti'
+              server      = Artifactory.newServer url: 'https://192.168.50.178:8888/artifactory', credentialsId: 'arti'
               rtGradle    = Artifactory.newGradleBuild()
               rtGradle.deployer repo: deployRepo, server: server
               rtGradle.deployer.deployMavenDescriptors = true

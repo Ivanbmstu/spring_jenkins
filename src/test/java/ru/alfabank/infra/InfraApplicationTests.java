@@ -13,6 +13,7 @@ public class InfraApplicationTests {
 	public void contextLoads() {
 		System.out.println("HELLO WORLD");
 		System.out.println(System.getProperty("java.version"));
+		System.out.println("props \n" + System.getProperties());
 	}
 
 }
