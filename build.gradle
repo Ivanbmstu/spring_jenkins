@@ -8,7 +8,6 @@ buildscript {
 			url "https://plugins.gradle.org/m2/"
 		}
 		maven { url 'https://repo.spring.io/plugins-release' }
-		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -29,7 +28,6 @@ targetCompatibility = 11
 
 repositories {
 	mavenLocal()
-	jcenter()
 	mavenCentral()
 }
 
@@ -53,17 +51,23 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
-
+publishing {
+	publications {
+		bootJava(MavenPublication) {
+			artifact bootJar
+		}
+	}
+}
 artifactory {
 	publish {
-		contextUrl = 'http://192.168.50.178:8081/artifactory'
+		contextUrl = 'https://192.168.50.178:8888/artifactory'
 		repository {
 			repoKey = "snapshots"
 			username = "admin"
 			password = "Password1"
 		}
 		defaults {
-			publications('mavenJava')
+			publications('bootJava')
 			publishArtifacts = true
 			// Properties to be attached to the published artifacts.
 			properties = [
@@ -78,10 +82,7 @@ artifactory {
 tasks.withType(GenerateModuleMetadata) {
 	enabled = false
 }
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifact bootJar
-		}
-	}
-}
+
+
+System.setProperty('javax.net.ssl.trustStore', 'local_nginx')
+System.setProperty('javax.net.ssl.trustStorePassword', '111111')
