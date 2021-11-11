@@ -40,6 +40,14 @@ pipeline {
         }
       }
     }
+    stage('oas validate') {
+      steps {
+        script {
+              sh './tools/install.sh'
+              sh './tools/validate.sh'
+        }
+      }
+    }
     stage('build') {
       steps {
           script {

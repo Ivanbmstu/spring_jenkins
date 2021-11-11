@@ -14,7 +14,9 @@ buildscript {
 		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.16.0"
 	}
 }
-
+plugins {
+	id 'org.openapi.generator' version '5.2.1'
+}
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'org.springframework.boot'
@@ -51,6 +53,26 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = "$rootDir/spec/openapi.yaml".toString()
+	outputDir = "$buildDir/generated".toString()
+	// todo to template
+	apiPackage = "open.api"
+	invokerPackage = "open.api"
+	modelPackage = "open.api.dto"
+	configOptions = [
+			dateLibrary: "java8",
+			interfaceOnly: "true",
+			skipDefaultInterface: "true",
+			swaggerAnnotations: "false",
+			enumPropertyNaming: "UPPERCASE"
+	]
+}
+compileJava.dependsOn("openApiGenerate")
+
+
 publishing {
 	publications {
 		bootJava(MavenPublication) {

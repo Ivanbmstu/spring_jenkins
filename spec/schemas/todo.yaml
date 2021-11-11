@@ -1,0 +1,25 @@
+openapi: "3.0.3"
+
+
+components:
+  schemas:
+    Todos: #todo
+      type: object
+      title: "todo" #todo
+      required:
+        - todos
+      properties:
+        todos:
+          title: "Массив todo" #todo
+          type: array
+          default: []
+          items:
+            $ref: '#/components/schemas/Todo'
+    Todo: #todo
+      type: object
+      title: "Объект todo" #todo
+      required:
+        - number
+      properties:
+        number:
+          type: string

@@ -1,0 +1,24 @@
+openapi: "3.0.3"
+
+
+components:
+  schemas:
+    Amount:
+      title: "Объект с суммой"
+      type: object
+      required:
+        - value
+        - currency
+        - minorUnits
+      properties:
+        value:
+          type: integer
+          format: int64
+        currency:
+          type: string
+        minorUnits:
+          type: integer
+      example:
+        value: 100000
+        currency: "RUB"
+        minorUnits: 100

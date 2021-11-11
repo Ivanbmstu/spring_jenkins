@@ -1,0 +1,12 @@
+openapi: "3.0.2"
+
+
+components:
+  parameters:
+    todoParam:
+      name: "todoParam" #todo
+      description: "Todo" #todo
+      required: true
+      in: "path"
+      schema:
+        type: string

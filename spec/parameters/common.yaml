@@ -1,0 +1,18 @@
+openapi: "3.0.2"
+
+
+components:
+  parameters:
+    userIdHeader:
+      in: header
+      name: AUTH-USER-ID
+      required: true
+      schema:
+        type: string
+    channelIdHeader:
+      in: header
+      name: CHANNEL-ID
+      required: true
+      schema:
+        type: string
+

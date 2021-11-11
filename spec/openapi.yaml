@@ -1,0 +1,42 @@
+openapi: "3.0.3"
+info:
+  title: "Customers API" #todo
+  version: "1.0.0"
+  description: "API для работы с продуктами клиента" #todo
+  contact:
+    name: "ООО Моя Оборона"
+    email: "api@some.bank"
+    url: "http://api-support.some.bank/"
+servers:
+  - url: https://todo.com #todo
+    description: Тестовый сервер
+paths:
+  "/todo": #todo
+    description: "Todo description" #todo
+    summary: "Todo summary" #todo
+    get:
+      tags:
+        - TodoTag #todo
+      summary: "Todo method description" #todo
+      parameters:
+        - $ref: "./parameters/common.yaml#/components/parameters/channelIdHeader"
+        - $ref: "./parameters/common.yaml#/components/parameters/userIdHeader"
+      responses:
+        '200':
+          $ref: "./responses/todo.yaml#/components/responses/success" #todo
+          $ref: "./responses/todo.yaml#/components/responses/success" #todo
+
+  "/todo/{todoParam}": #todo
+    description: "Todo description" #todo
+    summary: "Todo summary" #todo
+    get:
+      tags:
+        - TodoTag #todo
+      summary: "Todo method description 2" #todo
+      parameters:
+        - $ref: "./parameters/todo.yaml#/components/parameters/todoParam"
+        - $ref: "./parameters/common.yaml#/components/parameters/channelIdHeader"
+        - $ref: "./parameters/common.yaml#/components/parameters/userIdHeader"
+      responses:
+        '200':
+          $ref: "./responses/todo.yaml#/components/responses/success" #todo

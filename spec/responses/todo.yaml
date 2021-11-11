@@ -1,0 +1,13 @@
+openapi: "3.0.2"
+
+components:
+  responses:
+    success:
+      description: "OK"
+      content:
+        'application/json':
+          schema:
+            $ref: "../schemas/todo.yaml#/components/schemas/Todos"
+          examples:
+            todoExample:
+              $ref: "../examples/todo.yaml#/components/examples/todoGet"

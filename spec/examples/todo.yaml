@@ -1,0 +1,11 @@
+openapi: "3.0.3"
+
+
+components:
+  examples:
+    todoGet: # todo
+      summary: "Получение todo" # todo
+      value:
+        todos:
+          -
+            number: "40817810704980004078"

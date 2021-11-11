@@ -1,0 +1,6 @@
+lint:
+  extends:
+    - recommended
+  rules:
+    no-invalid-media-type-examples: error
+    paths-kebab-case: error
