@@ -84,5 +84,5 @@ tasks.withType(GenerateModuleMetadata) {
 }
 
 
-System.setProperty('javax.net.ssl.trustStore', 'local_nginx')
-System.setProperty('javax.net.ssl.trustStorePassword', '111111')
+System.setProperty('javax.net.ssl.trustStore', 'cacerts')
+System.setProperty('javax.net.ssl.trustStorePassword', '')
