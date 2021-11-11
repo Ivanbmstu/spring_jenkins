@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.3.11.RELEASE'
+		springBootVersion = '2.5.4'
 	}
 	repositories {
 		mavenCentral()
@@ -22,8 +22,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.jfrog.artifactory"
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 17
+targetCompatibility = 17
 
 
 repositories {
