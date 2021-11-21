@@ -14,16 +14,16 @@ paths:
   "/todo": #todo
     description: "Todo description" #todo
     summary: "Todo summary" #todo
-    get:
-      tags:
-        - TodoTag #todo
-      summary: "Todo method description" #todo
-      parameters:
-        - $ref: "./parameters/common.yaml#/components/parameters/channelIdHeader"
-        - $ref: "./parameters/common.yaml#/components/parameters/userIdHeader"
-      responses:
-        '200':
-          $ref: "./responses/todo.yaml#/components/responses/success" #todo
+  get:
+    tags:
+      - TodoTag #todo
+    summary: "Todo method description" #todo
+    parameters:
+      - $ref: "./parameters/common.yaml#/components/parameters/channelIdHeader"
+      - $ref: "./parameters/common.yaml#/components/parameters/userIdHeader"
+    responses:
+      '200':
+        $ref: "./responses/todo.yaml#/components/responses/success" #todo
 
   "/todo/{todoParam}": #todo
     description: "Todo description" #todo
