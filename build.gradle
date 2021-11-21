@@ -82,7 +82,7 @@ publishing {
 }
 artifactory {
 	publish {
-		contextUrl = 'https://192.168.50.178:8888/artifactory'
+		contextUrl = 'https://192.168.1.201:8888/artifactory'
 // available in jenkins
 //		repository {
 //			repoKey = "snapshots"
