@@ -24,8 +24,8 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.jfrog.artifactory"
 group = 'ru.alfabank'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 17
-targetCompatibility = 17
+sourceCompatibility = 11
+targetCompatibility = 11
 
 
 repositories {
