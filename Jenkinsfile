@@ -9,7 +9,7 @@ String deployRepo, repoSlug, projKey, branch, version
 pipeline {
   agent {
     label {
-      label 'local-jenkins'
+      label 'j11-jenkins'
       customWorkspace UUID_DIR
     }
   }
